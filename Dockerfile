@@ -6,7 +6,9 @@ RUN chmod -R a+w $(go env GOTOOLDIR)
 
 # Allow Go support files in gdb.
 RUN echo "add-auto-load-safe-path $(go env GOROOT)/src/runtime/runtime-gdb.py" > ~/.gdbinit
-RUN apt-get install gnupg2
+RUN apt-get update && apt-get -y install gnupg2 &&\
+    apt-get autoclean && apt-get autoremove &&\
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_10.x xenial main' | tee /etc/apt/sources.list.d/nodesource.list \
