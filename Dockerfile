@@ -42,7 +42,7 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
     netcat \
     netbase \
     nodejs \
-    openjdk-8-jre \
+    openjdk-8-jre-headless \
     openssh-client \
     yarn \
     google-chrome-stable \
