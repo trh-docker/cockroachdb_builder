@@ -60,9 +60,29 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
 #     rm -rf awscli-bundle.zip awscli-bundle
 
 # ENV PATH /opt/backtrace/bin:$PATH
-RUN apt-get update && apt-get -y install bison gperf flex &&\
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    apt-transport-https \
+    autoconf \
+    bison \
+    bzip2 \
+    ca-certificates \
+    curl \
+    file \
+    flex \
+    g++ \
+    gawk \
+    git \
+    gperf \
+    help2man \
+    libncurses-dev \
+    make \
+    patch \
+    texinfo \
+    gperf \
+    xz-utils &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+
 
 RUN mkdir crosstool-ng \
     && curl -fsSL http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.23.0.tar.xz | tar --strip-components=1 -C crosstool-ng -xJ \
@@ -102,3 +122,20 @@ RUN mkdir llvm                    && curl -sfSL http://releases.llvm.org/3.9.1/l
     && curl -fsSL https://github.com/llvm-mirror/libcxx/commit/b640da0b315ead39690d4d65c76938ab8aeb5449.patch | git -C llvm/projects/libcxx apply \
     && mkdir libcxx_msan && (cd libcxx_msan && cmake ../llvm -DCMAKE_BUILD_TYPE=Release -DLLVM_USE_SANITIZER=Memory && make cxx -j$(nproc)) \
     && rm -rf llvm
+RUN apt-get purge -y \
+    apt-transport-https \
+    automake \
+    autopoint \
+    bzip2 \
+    file \
+    flex \
+    gawk \
+    gettext \
+    golang \
+    gperf \
+    help2man \
+    python \
+    rsync \
+    texinfo &&\
+    apt-get autoclean && apt-get autoremove &&\
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
