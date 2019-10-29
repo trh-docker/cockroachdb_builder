@@ -61,7 +61,7 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
 #     rm -rf awscli-bundle.zip awscli-bundle
 
 # ENV PATH /opt/backtrace/bin:$PATH
-RUN apt-get update && apt-get install gperf &&\
+RUN apt-get update && apt-get -y install gperf &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
