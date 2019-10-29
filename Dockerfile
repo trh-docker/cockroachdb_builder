@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y gnupg2 tar git curl wget apt-transport-
 # yarn - ui
 # chrome - ui
 # unzip - for installing awscli
-RUN apt update
+RUN mkdir -p /usr/share/man/man1mkdir -p /usr/share/man/man1
 RUN  apt-get update && apt-get install -y --no-install-recommends \
     ccache \
     google-cloud-sdk \
@@ -43,6 +43,7 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
     netcat \
     netbase \
     nodejs \
+    openjdk-8-jre-headless \
     openssh-client \
     yarn \
     google-chrome-stable \
