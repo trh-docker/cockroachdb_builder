@@ -61,6 +61,9 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
 #     rm -rf awscli-bundle.zip awscli-bundle
 
 # ENV PATH /opt/backtrace/bin:$PATH
+RUN apt-get update && apt-get install gperf &&\
+    apt-get autoclean && apt-get autoremove &&\
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 RUN mkdir crosstool-ng \
     && curl -fsSL http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.23.0.tar.xz | tar --strip-components=1 -C crosstool-ng -xJ \
