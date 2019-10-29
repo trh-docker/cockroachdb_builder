@@ -53,10 +53,10 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
 
 # awscli - roachtests
 # NB: we don't use apt-get because we need an up to date version of awscli
-RUN curl -fsSL "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \
-    unzip awscli-bundle.zip && \
-    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
-    rm -rf awscli-bundle.zip awscli-bundle
+# RUN curl -fsSL "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && \
+#     unzip awscli-bundle.zip && \
+#     ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
+#     rm -rf awscli-bundle.zip awscli-bundle
 
-ENV PATH /opt/backtrace/bin:$PATH
+# ENV PATH /opt/backtrace/bin:$PATH
 
