@@ -8,7 +8,7 @@ RUN chmod -R a+w $(go env GOTOOLDIR)
 RUN echo "add-auto-load-safe-path $(go env GOROOT)/src/runtime/runtime-gdb.py" > ~/.gdbinit
 
 RUN apt-get update && apt-get install -y gnupg2 tar git curl wget apt-transport-https ca-certificates build-essential &&\
-    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add && echo 'deb https://deb.nodesource.com/node_11.x stretch main' > /etc/apt/sources.list.d/nodesource.list && echo "deb-src https://deb.nodesource.com/node_11.x stretch main" >> /etc/apt/sources.list.d/nodesource.list &&\
+    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add && echo 'deb https://deb.nodesource.com/node_10.x stretch main' > /etc/apt/sources.list.d/nodesource.list && echo "deb-src https://deb.nodesource.com/node_10.x stretch main" >> /etc/apt/sources.list.d/nodesource.list &&\
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - &&\
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list &&\
     apt-get update && apt-get install -y nodejs yarn && apt-get clean &&\
