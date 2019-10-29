@@ -49,7 +49,6 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
     google-chrome-stable \
     gnutls-bin \
     unzip &&\
-    gperf &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
