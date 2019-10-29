@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y gnupg2 tar git curl wget apt-transport-
 # yarn - ui
 # chrome - ui
 # unzip - for installing awscli
-RUN  apt-get update && apt-get install -y --no-install-recommends \
+RUN  apt-get update && apt-get install -y \
     ccache \
     google-cloud-sdk \
     lsof \
