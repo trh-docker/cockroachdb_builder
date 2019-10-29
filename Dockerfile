@@ -61,3 +61,12 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
 
 # ENV PATH /opt/backtrace/bin:$PATH
 
+RUN mkdir crosstool-ng \
+    && curl -fsSL http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.23.0.tar.xz | tar --strip-components=1 -C crosstool-ng -xJ \
+    && cd crosstool-ng \
+    && ./configure --prefix /usr/local/ct-ng \
+    && make -j$(nproc) \
+    && make install \
+    && cp ct-ng.comp /etc/bash_completion.d/ \
+    && cd .. \
+    && rm -rf crosstool-ng
