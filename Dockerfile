@@ -42,8 +42,7 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
     netcat \
     netbase \
     nodejs \
-    openjdk-7-jre-headless \
-    java7-runtime-headless \
+    openjdk-8-jdk-headless\
     openjdk-8-jre-headless \
     openssh-client \
     yarn \
