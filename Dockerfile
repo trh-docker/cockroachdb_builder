@@ -97,9 +97,9 @@ RUN mkdir crosstool-ng \
 COPY x86_64-unknown-linux-gnu.defconfig x86_64-unknown-linux-musl.defconfig x86_64-w64-mingw.defconfig aarch64-unknown-linux-gnueabi.defconfig ./
 RUN mkdir src \
     && mkdir build && (cd build && DEFCONFIG=../x86_64-unknown-linux-gnu.defconfig      /usr/local/ct-ng/bin/ct-ng defconfig && /usr/local/ct-ng/bin/ct-ng build) && rm -rf build \
-    && mkdir build && (cd build && DEFCONFIG=../x86_64-unknown-linux-musl.defconfig     /usr/local/ct-ng/bin/ct-ng defconfig && /usr/local/ct-ng/bin/ct-ng build) && rm -rf build \
-    && mkdir build && (cd build && DEFCONFIG=../x86_64-w64-mingw.defconfig              /usr/local/ct-ng/bin/ct-ng defconfig && /usr/local/ct-ng/bin/ct-ng build) && rm -rf build \
-    && mkdir build && (cd build && DEFCONFIG=../aarch64-unknown-linux-gnueabi.defconfig /usr/local/ct-ng/bin/ct-ng defconfig && /usr/local/ct-ng/bin/ct-ng build) && rm -rf build \
+    # && mkdir build && (cd build && DEFCONFIG=../x86_64-unknown-linux-musl.defconfig     /usr/local/ct-ng/bin/ct-ng defconfig && /usr/local/ct-ng/bin/ct-ng build) && rm -rf build \
+    # && mkdir build && (cd build && DEFCONFIG=../x86_64-w64-mingw.defconfig              /usr/local/ct-ng/bin/ct-ng defconfig && /usr/local/ct-ng/bin/ct-ng build) && rm -rf build \
+    # && mkdir build && (cd build && DEFCONFIG=../aarch64-unknown-linux-gnueabi.defconfig /usr/local/ct-ng/bin/ct-ng defconfig && /usr/local/ct-ng/bin/ct-ng build) && rm -rf build \
     && rm -rf src
 
 RUN mkdir -p /usr/local/lib/ccache \
