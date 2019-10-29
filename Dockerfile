@@ -47,8 +47,9 @@ RUN  apt-get update && apt-get install -y --no-install-recommends \
     yarn \
     google-chrome-stable \
     gnutls-bin \
-    unzip \
-    git
+    unzip &&\
+    apt-get autoclean && apt-get autoremove &&\
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 # awscli - roachtests
 # NB: we don't use apt-get because we need an up to date version of awscli
