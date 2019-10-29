@@ -6,10 +6,14 @@ RUN chmod -R a+w $(go env GOTOOLDIR)
 
 # Allow Go support files in gdb.
 RUN echo "add-auto-load-safe-path $(go env GOROOT)/src/runtime/runtime-gdb.py" > ~/.gdbinit
-RUN apt-get update && apt-get -y install gnupg2 &&\
+
+RUN apt-get update && apt-get install -y gnupg2 tar git curl wget apt-transport-https ca-certificates build-essential &&\
+    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add && echo 'deb https://deb.nodesource.com/node_11.x stretch main' > /etc/apt/sources.list.d/nodesource.list && echo "deb-src https://deb.nodesource.com/node_11.x stretch main" >> /etc/apt/sources.list.d/nodesource.list &&\
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - &&\
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list &&\
+    apt-get update && apt-get install -y nodejs yarn && apt-get clean &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
-
 # RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
 #     && echo 'deb https://deb.nodesource.com/node_10.x stretch main' | tee /etc/apt/sources.list.d/nodesource.list \
 #     && curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -30,7 +34,7 @@ RUN apt-get update && apt-get -y install gnupg2 &&\
 # yarn - ui
 # chrome - ui
 # unzip - for installing awscli
-RUN apt-get install -y --no-install-recommends \
+RUN  apt-get update && apt-get install -y --no-install-recommends \
     ccache \
     google-cloud-sdk \
     lsof \
